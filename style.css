@@ -1,15 +1,210 @@
 .header{
-    color: blue;
+    color: rgb(1, 1, 12);
     text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-content: space-between;
+    align-items: stretch;
+    flex-direction: row;
+}
+
+.header-button{
+    background-color: rgb(210, 248, 198);
+    border-radius: 5%;
+    border-style: dashed;
+}
+
+.header-button:hover{
+    background-color: rgb(131, 247, 96);
 }
 
 
-.box{
+.button{
+    position: relative;
     width: 150px;
-    background-color: chartreuse;
+    text-justify:auto;
     display: inline-block;
+    border-radius: 15%;
+    color: black;
+}
+
+.button:hover{
+    background-color: rgb(134, 235, 203);
+    border-radius: 15%;
 }
 
 .display{
     display: inline-block;
+    margin: 1%;
 }
+
+.content{
+    width: 40vw;
+    height: 40vh;
+    position: relative;
+    left: 50vw;
+    top: 40vh;
+    transform: translate(-50%, -50%);
+    border-radius: 10%;
+    border-style: double;
+    text-align: center;
+    background-color: rgb(184, 184, 235);
+}
+
+.section{
+    border-radius: 5%;
+    border-style: groove;
+    width: 33%;
+    padding: 5%;
+    margin: 0.5%;
+    height: 70vh;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.encabezado{
+    text-align: center;
+}
+
+.formulario{
+    
+}
+
+/* TOOLTIPTEXT*/
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 250px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+  
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+  
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  /* Tooltip arrow */
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .img{
+      width: 25px;
+      height: 25px;
+  }
+
+  .campo{
+    display: flex;
+    justify-content: flex-end;
+    align-content: space-between;
+    align-items: stretch;
+    flex-direction: row;
+  }
+
+  .send{      
+      position: relative;
+      left: 50%;
+      transform: translate(-50%,30%);
+  }
+
+  .send-button{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 40px;
+    border-radius: 10%;
+    background-color: rgb(222, 243, 236);
+  }
+
+  .send-button:hover{
+    background-color: rgb(0, 236, 158);
+  }
+
+  .num-container{
+    height: 68vh;
+    overflow-y: auto;
+  }
+
+  .button-icon{
+      background-color: transparent;
+      border: none;
+  }
+
+  .button-icon:hover{
+      background-color: rgb(232, 255, 227);
+      border-radius: 40%;
+  }
+
+  .animation{
+      /* visibility: hidden; */
+  }
+
+  .test{
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items: stretch;
+    flex-direction: row;
+  }
+
+  .btn-exportar{
+    position: relative;
+    left: 50%;
+    width: 90px;
+    height: 40px;
+    border-radius: 10%;
+    background-color: rgb(222, 243, 236);
+    transform: translateX(-50%);
+  }
+
+  .btn-exportar:hover{
+    background-color: rgb(0, 236, 158);
+  }
+
+  .exportar{
+      position: relative;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+
+

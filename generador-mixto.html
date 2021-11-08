@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parametros</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+    
+</head>
+<body>
+    <header class="header">
+        <div class="display"><button class="header-button"><a href="index.html">Ir al inicio</a></button></div> 
+        <h1 class="display">Generador de numeros aleatorios </h1>
+        <div class="display "><button class="header-button" ><a href="generador-multi.html">Cambiar generador</a></button></div>
+    </header>
+    <article class="container">
+        
+        <section class="form section">
+            <div class="encabezado">
+                <h3>GENERADOR CONGRUENCIAL MIXTO</h3>
+            </div>            
+            <br>
+            <h3>Parametros</h3>
+            <h4>Ingrese la siguiente información:</h4>
+            <div class="formulario">
+                <form> <!-- Formulario para los parametros -->
+                    <div class="campo tooltip">
+                        <b class="display ">Xo:</b>
+                        <input type="number" class="display" required id="X">
+                        <span class="display"><img src="assets/info.png" alt="" class="img">
+                            <span class="tooltiptext">Xo debe ser mayor a 0</span>
+                        </span>                        
+                    </div>
+                    <div class="campo tooltip">
+                        <b class="display">a:</b>
+                        <input type="number" class="display" required id="a">
+                        <span class="display"><img src="assets/info.png" alt="" class="img">
+                            <span class="tooltiptext">a debe ser mayor a 0, entera impar no divisible por 3 o 5</span>
+                        </span>
+                        
+                    </div>
+                    <div class="campo tooltip">
+                        <b class="display">c:</b>
+                        <input type="number" class="display" required id="c">
+                        <span class="display"><img src="assets/info.png" alt="" class="img">
+                            <span class="tooltiptext">c debe ser mayor a 0, impar, entero, distinto a m y 1</span>
+                        </span>
+                        
+                    </div>
+                    <div class="campo tooltip">
+                        <b class="display">m:</b>
+                        <input type="number" class="display" required id="m">
+                        <span class="display"><img src="assets/info.png" alt="" class="img">
+                            <span class="tooltiptext">m debe ser mayor a Xo, a y c, ademas debe ser el primo mas grande que se aproxime a la cantidad de numeros aleatorios a generar</span>
+                        </span>
+                        
+                    </div>
+                    <div class="send">
+                        <input type="button" onclick="generar(0,'X','a','c','m','tableMixto')" class="send-button" value="Generar">
+                    </div>
+                    
+                </form>
+            </div>
+        </section>
+        <section class="result section">
+            <div class="encabezado">
+                <h3>NÚMEROS GENERADOS</h3>
+                <div class="num-container">
+                    <table id="tableMixto" class="table" align="center">
+                        <tr>
+                            <th>Número</th>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.525232</td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.526369<td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.124568</td>                       
+                        </tr>
+                        <tr>                        
+                            <td>0.525232</td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.526369<td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.124568</td>                       
+                        </tr>
+                        <tr>                        
+                            <td>0.525232</td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.526369<td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.124568</td>                       
+                        </tr>
+                        <tr>                        
+                            <td>0.525232</td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.526369<td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.124568</td>                       
+                        </tr>
+                        <tr>                        
+                            <td>0.525232</td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.526369<td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.124568</td>                       
+                        </tr>
+                        <tr>                        
+                            <td>0.525232</td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.526369<td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.124568</td>                       
+                        </tr>
+                        <tr>                        
+                            <td>0.525232</td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.526369<td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.124568</td>                       
+                        </tr>
+                        <tr>                        
+                            <td>0.525232</td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.526369<td>                       
+                        </tr>                        
+                        <tr>                        
+                            <td>0.124568</td>                       
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section class="tests section">
+            <div class="encabezado">
+                <h3>PRUEBAS ESTADÍSTICAS</h3>
+                <div class="test">
+                    <span class="display animation"> <img id="tmi1" src="assets/loading.png" class="img" alt=""></span>
+                    <span class="display">Prueba de promedios</span>
+                    <button class="display button-icon" onclick="playTest(1,'tmi1',0)"><img src="assets/play.png" class="img" alt=""></button>
+                </div>
+                <div class="test">
+                    <span class="display animation"> <img id="tmi2" src="assets/loading.png" class="img" alt=""></span>
+                    <span class="display">Prueba de distancia</span>
+                    <button class="display button-icon" onclick="playTest(2,'tmi2',0)"><img src="assets/play.png" class="img" alt=""></button>
+                </div> 
+                <div class="test">
+                    <span class="display animation"> <img id="tmi3" src="assets/loading.png" class="img" alt=""></span>
+                    <span class="display">Prueba de distancia</span>
+                    <button class="display button-icon" onclick="playTest(3,'tmi3',0)"><img src="assets/play.png" class="img" alt=""></button>
+                </div> 
+                <div class="test">
+                    <span class="display animation"> <img id="tmi4" src="assets/loading.png" class="img" alt=""></span>
+                    <span class="display">Prueba de distancia</span>
+                    <button class="display button-icon" onclick="playTest(4,'tmi4',0)"><img src="assets/play.png" class="img" alt=""></button>
+                </div> 
+                <div class="test">
+                    <span class="display animation"> <img id="tmi5" src="assets/loading.png" class="img" alt=""></span>
+                    <span class="display">Prueba de distancia</span>
+                    <button class="display button-icon" onclick="playTest(5,'tmi5',0)"><img src="assets/play.png" class="img" alt=""></button>
+                </div>             
+            </div>
+            <div class="exportar">
+                <button id="exportarMixto" class="btn-exportar" onclick="exportReportToExcel('tableMixto','CMixto')" disabled>Exportar a excel</button>
+            </div>            
+        </section>
+    </article>
+
+    <script src="logic.js"></script>
+    <script src="export.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/linways/table-to-excel@v1.0.4/dist/tableToExcel.js"></script>
+</body>
+</html>
