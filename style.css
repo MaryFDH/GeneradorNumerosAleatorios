@@ -1,0 +1,15 @@
+.header{
+    color: blue;
+    text-align: center;
+}
+
+
+.box{
+    width: 150px;
+    background-color: chartreuse;
+    display: inline-block;
+}
+
+.display{
+    display: inline-block;
+}
