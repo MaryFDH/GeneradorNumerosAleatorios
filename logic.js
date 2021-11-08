@@ -113,11 +113,11 @@ console.log(generadorDeNumAlMulti(3,5,157)); */
 console.log(generarNumAleatorios(1,7,7,13,173));
 console.log(generarNumAleatorios(2,3,5,0,157)); */
 
-/* console.log(pFrecuencias(generarNumAleatorios(2,3,85,0,991)));
-console.log(pPromedios(generarNumAleatorios(2,3,5,0,157))); */
-
-console.log(pKolmogovSmirnov(generarNumAleatorios(1,5,7,13,101)))
-
+console.log(pFrecuencias(generarNumAleatorios(2,3,5,0,157)));
+console.log(pPromedios(generarNumAleatorios(2,3,5,0,157)));
+console.log(pKolmogorovSmirnov(generarNumAleatorios(2,3,5,0,157)));
+console.log(pDistancias(generarNumAleatorios(2,3,5,0,157)));
+console.log(pCorridas(generarNumAleatorios(2,3,5,0,157)));
 
 /* **** ----Funciones para generar los numero alea,torios----****** */
 
@@ -259,6 +259,7 @@ function verificarParametrosMulti(x,a,m){
 
 /* ********------ Funciones para las pruebas estadisticas------******** */
 
+//Función para prueba de promedios
 function pPromedios(numAleatorios=[]){
     let prom, Zo, absZo, sumatoria = 0;
 
@@ -277,6 +278,7 @@ function pPromedios(numAleatorios=[]){
     }
 }
 
+//Función para prueba de frecuencias
 function pFrecuencias(numAleatorios=[]){
 
     /* intervalor: [0 --- > 0 - 0.2] 
@@ -323,7 +325,8 @@ function pFrecuencias(numAleatorios=[]){
 
 }
 
-function pKolmogovSmirnov(numAleatorios=[]){
+//Función para prueba de Kolmogorov-Smirnov
+function pKolmogorovSmirnov(numAleatorios=[]){
     let Fn=[], DnOper=[], Dn, d;
 
     numAleatorios.sort(function(a, b){return a - b});
@@ -333,13 +336,10 @@ function pKolmogovSmirnov(numAleatorios=[]){
         numAl.push(parseFloat(numAleatorios[i]))
     }
 
-    console.log(numAl);
     for(let x=0; x<numAl.length; x++){
         Fn[x]=(x+1) / numAl.length;
         DnOper[x]= Math.abs((Fn[x]-numAl[x]));
     }
-
-    console.log(DnOper);
 
     Dn = Math.max.apply(null,DnOper);
 
@@ -351,7 +351,7 @@ function pKolmogovSmirnov(numAleatorios=[]){
             }else{
                 return false;
             }
-        }else if(x == kolmogorovSmirnov-1){
+        }else if(x == kolmogorovSmirnov.length-1){
             d=1.36/(Math.sqrt(numAleatorios.length));
             if(Dn<d){
                 return true;
@@ -362,7 +362,180 @@ function pKolmogovSmirnov(numAleatorios=[]){
 
     }
 
-    console.log(Dn);
+ 
 
 
 }
+
+//Función para prueba de distancias (cosiderados los numeros Pseudo aleatorio como reales ). 
+function pDistancias(numAleatorios=[]){
+
+    /* α = 0.3 y β = 0.5 , los grados de libertad es la cantidad de intervalos y esta caso seran 5 por lo que 
+    lor grados de libertad son 5*/
+
+    let s=[], numHuecos=[], cont=0, cont2=0, fe=[], fo=[0,0,0,0,0,0], h=0, Xy=[], Xo2=0, libertad=5, xEsta;
+
+    for(let x=0; x<numAleatorios.length; x++){
+        if(numAleatorios[x]>=0.3 && numAleatorios[x]<=0.5){
+            s[x]=1;
+        }else{
+            s[x]=0;
+        }
+    }
+
+    for(let x=0; x<s.length; x++){
+
+        if(s[x]==0){
+            cont=cont + 1;
+            if(s[x+1]==1 || x == s.length-1){
+                numHuecos[cont2]=cont;
+                cont2=cont2+1;
+                cont=0;
+            }
+        }else{
+            if(s[x+1]==1){
+                numHuecos[cont2]=0;
+                cont2=cont2+1;
+            }
+        }
+
+    }
+
+    for(let x=0; x<numHuecos.length; x++){
+        if(numHuecos[x]==0){
+            fo[0]=fo[0]+1;
+        }else if(numHuecos[x]==1){
+            fo[1]=fo[1]+1;
+        }else if(numHuecos[x]==2){
+            fo[2]=fo[2]+1;
+        }else if(numHuecos[x]==3){
+            fo[3] = fo[3]+1;
+        }else if(numHuecos[x]==4){
+            fo[4] = fo[4]+1;
+        }else if(numHuecos[x]>=5){
+            fo[5] = fo[5]+1;
+        }
+    }
+
+
+    for(let x=0; x<fo.length; x++){
+        h= h + fo[x];
+    }
+    
+
+    for(let x=0; x<6; x++){
+        if(x==5){
+            fe[x]=(h)*Math.pow((1-(0.5-0.3)),x)
+        }else{
+            fe[x]=(h)*(0.5-0.3)* Math.pow((1-(0.5-0.3)),x)
+        }   
+    }
+
+
+    for(let x=0; x<fe.length; x++){
+        Xy[x]= (Math.pow((fo[x]-fe[x]),2)) /fe[x];
+        Xo2 = Xo2 + Xy[x];
+    }
+
+    console.log(Xo2);
+    console.log(numHuecos);
+    console.log(fo);
+    console.log(fe);
+
+    for(let x=0; x<chiCuadrado.length; x++){
+        
+        if(chiCuadrado[x][0] == libertad){
+             xEsta= chiCuadrado[x][1];
+            if(Xo2<xEsta){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        
+    }
+
+}
+
+//Función para prueba de corridas (corridas hacia bajo y hacia arriba del promedio)
+function pCorridas(numAleatorios=[]){
+    let s=[], logCorridas=[], cont=0, cont2=0, fo=[0,0,0,0,0,0,0], fe=[], Xo=[], Xo2=0, libertad=7, xEsta;
+
+    for(let x=0; x<numAleatorios.length; x++){
+        if(numAleatorios[x]<0.5){
+            s[x]=0;
+        }else[
+            s[x]=1,
+        ]
+    }
+
+    for(let x=0; x<s.length; x++){
+        if(s[x]==0){            
+            cont = cont+1;
+            if(s[x+1] == 1 || x==s.length-1){
+                logCorridas.push(cont);
+                cont = 0;
+            }
+            
+        }else{
+            cont2 = cont2 +1;
+            if(s[x+1] == 0 || x==s.length-1){
+                logCorridas.push(cont2);
+                cont2 = 0;
+            }
+        }
+        
+    }
+
+
+    for(let x=0; x<logCorridas.length; x++){
+        if(logCorridas[x]==1){
+            fo[0]=fo[0]+1;
+        }else if(logCorridas[x]==2){
+            fo[1]=fo[1]+1;
+        }else if(logCorridas[x]==3) {
+            fo[2]=fo[2]+1;
+        }else if(logCorridas[x]==4){
+            fo[3]=fo[3]+1;
+        }else if(logCorridas[x]==5){
+            fo[4]=fo[4]+1;
+        }else if(logCorridas[x]==6){
+            fo[5]=fo[5]+1;
+        }else if(logCorridas[x]>=7){
+            fo[6]=fo[6]+1;
+        }
+
+
+    }
+    let i=0;
+    for(let x=0;x<fo.length; x++){
+        i=x+1;
+        fe[x]=(numAleatorios.length - i +3)/(Math.pow(2,(i+1)));
+    }
+
+  /*   console.log(fe); */
+
+    for(let x=0; x<fo.length; x++){
+        Xo[x]= (Math.pow((fo[x]-fe[x]),2)) / fe[x];
+        Xo2= Xo2 + Xo[x];
+    }
+
+/*     console.log(Xo);
+    console.log(Xo2); */
+
+    for(let x=0; x<chiCuadrado.length; x++){
+        
+        if(chiCuadrado[x][0] == libertad){
+             xEsta= chiCuadrado[x][1];
+            if(Xo2<xEsta){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        
+    }
+
+}
+
+
